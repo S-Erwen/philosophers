@@ -6,7 +6,7 @@
 #    By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/15 11:25:27 by esidelar          #+#    #+#              #
-#    Updated: 2021/02/16 11:20:43 by esidelar         ###   ########lyon.fr    #
+#    Updated: 2021/11/26 16:11:30 by esidelar         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ CFLAGS 	= 	-Wall -Wextra -Werror
 #							   	   PHILOSOPHERS	  	   						   #
 ################################################################################
 
-SRCS =		philosophers.c \
+SRCS =		main.c \
+			philosophers.c \			
 			ft_isnum.c \
 			ft_atoi.c \
 			ft_sleep.c \
