@@ -40,12 +40,13 @@ typedef struct		s_philo
 
 typedef struct		s_set
 {
-	int				time_eat;
-	int				time_sleep;
-	int				time_die;
+	long int		time_eat;
+	long int		time_sleep;
+	long int		time_die;
 	int				nb_eat;
 	int				nb_philo;
 	int				is_finish;
+	long int		start_time;
 	pthread_mutex_t	finish;
 	pthread_mutex_t	write_mutex;
 }					t_set;
@@ -57,8 +58,11 @@ typedef struct		s_all
 }					t_all;
 
 int					call_err(char *err, t_all *all, int f);
-int					init_philo(t_all *all);
+int					init_philo(t_philo *philo);
 
 int					parsing_gv(int ac, char **gv, t_set *set);
+
+long int			actual_time(void);
+void				ft_usleep(long int time_in_ms);
 
 #endif

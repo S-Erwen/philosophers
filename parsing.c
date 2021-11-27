@@ -34,7 +34,7 @@ int			parsing_gv(int ac, char **gv, t_set *set)
 		if ((set->nb_eat = ft_isnum(gv[i++])) == -1)
 			return (-1);
 	set->nb_eat = -1;
-	if (set->nb_philo <= 0 || set->time_die <= 0 || set->time_eat <= 0
+	if (set->nb_philo < 2 || set->time_die <= 0 || set->time_eat <= 0
 		|| set->time_sleep <= 0)
 		return (-1);
 	return (0);
