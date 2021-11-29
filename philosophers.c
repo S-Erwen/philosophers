@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 15:45:09 by esidelar          #+#    #+#             */
-/*   Updated: 2021/11/26 16:12:40 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2021/11/29 17:49:31 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void     	pthread_start(t_all *all)
 {
-	int		i = 0;
+	int		i;
+	int		ret;
 	
 	i = 0;
 	all->setting.start_time = actual_time();
@@ -27,6 +28,12 @@ void     	pthread_start(t_all *all)
 	i = -1;
 	while (++i < all->setting.nb_philo)
 		pthread_mutex_lock(&all->setting.finish);
+	while (++i < all->setting.nb_philo)
+	ret = pthread_join(all->philo);
+	if (!ret)
+		call_err("")
+	ret = pthread_detach(all->philo);
+	if (!ret)
 }
 
 void        time_to_die(t_philo *philo)
