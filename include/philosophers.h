@@ -13,30 +13,12 @@
 #ifndef PHILOSOPHERS_H
 # define PHILOSOPHERS_H
 
-# define FORK "has taken a fork"
-# define EAT "is eating"
-# define SLEEP "is sleeping"
-# define THINK "is thinking"
-# define DIE "died"
-
 # include <pthread.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <string.h>
 # include <sys/time.h>
-
-typedef struct		s_philo
-{
-	int				nb;
-	long int		stack_time;
-	int				eating_count;
-	pthread_t		routine;
-	pthread_t		death;
-	pthread_mutex_t	*left_fork;
-	pthread_mutex_t	right_fork;
-	t_set			*set;
-}					t_philo;
 
 typedef struct		s_set
 {
@@ -51,6 +33,19 @@ typedef struct		s_set
 	pthread_mutex_t	write_mutex;
 }					t_set;
 
+typedef struct		s_philo
+{
+	int				nb;
+	long int		stack_time;
+	long int		eat_time;
+	int				eating_count;
+	pthread_t		routine;
+	pthread_t		death;
+	pthread_mutex_t	*left_fork;
+	pthread_mutex_t	right_fork;
+	t_set			*set;
+}					t_philo;
+
 typedef struct		s_all
 {
 	t_set			setting;
@@ -58,11 +53,19 @@ typedef struct		s_all
 }					t_all;
 
 int					call_err(char *err, t_all *all, int f);
-int					init_philo(t_philo *philo);
+int					init_philo(t_philo *philo, t_set *set);
 
 int					parsing_gv(int ac, char **gv, t_set *set);
 
 long int			actual_time(void);
 void				ft_usleep(long int time_in_ms);
+
+int     			pthread_start(t_all *all);
+void				write_philo(t_philo *p, char *msg, int eat);
+void        		*time_to_die(void *t_data);
+void				*launch_routine(void *t_data);
+
+int					ft_atoi(const char *nptr);
+int					ft_isnum(char *str);
 
 #endif

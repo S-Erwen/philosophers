@@ -6,7 +6,6 @@
 int 		main(int ac, char **gv)
 {
 	t_all	*all;
-	int 	code;
 
 	all = malloc(sizeof(t_all));
 	if (!all)
@@ -16,16 +15,16 @@ int 		main(int ac, char **gv)
 	all->philo = malloc(sizeof(t_philo) * all->setting.nb_philo);
 	if (!all->philo)
 		return (call_err("MALLOC_ERR01", all, ALL_ALLOC));
-	if (init_philo(all->philo))
+	if (init_philo(all->philo, &all->setting))
 		return (call_err("INIT_PHILO_ERR", all, PHILO_ALLOC));
-	pthread_start(all);
-	return (0);
+	return (pthread_start(all));
 }
 
 int			call_err(char *err, t_all *all, int f)
 {
 	printf("%s\n", err);
 	if (f)
+	{
 		if (f == PHILO_ALLOC)
 		{
 			free(all);
@@ -33,10 +32,11 @@ int			call_err(char *err, t_all *all, int f)
 		}
 		else if (f == ALL_ALLOC)
 			free(all);
+	}
 	return (-1);
 }
 
-int			init_philo(t_philo *philo)
+int			init_philo(t_philo *philo, t_set *set)
 {
 	int		i;
 	int		ret;
@@ -49,13 +49,13 @@ int			init_philo(t_philo *philo)
 		{
 			philo[i].nb = i + 1;
 			philo[i].eating_count = 0;
-			philo[i].set = &philo->set;
+			philo[i].set = set;
 			ret = pthread_mutex_init(&philo[i].right_fork, NULL);
 			if (i)
-				philo[i].left_fork = &philo[i - 1].left_fork;
+				philo[i].left_fork = &philo[i - 1].right_fork;
 		}
 		else
-			philo[0].left_fork = &philo[i].left_fork;
+			philo[0].left_fork = &philo[i].right_fork;
 		i++;
 	}
 	return (0);

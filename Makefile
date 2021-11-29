@@ -20,10 +20,10 @@ CFLAGS 	= 	-Wall -Wextra -Werror
 ################################################################################
 
 SRCS =		main.c \
-			philosophers.c \			
+			philosophers.c \
 			ft_isnum.c \
 			ft_atoi.c \
-			ft_sleep.c \
+			set_time.c \
 			parsing.c \
 
 OBJS	= 	$(SRCS:.c=.o)
@@ -35,7 +35,7 @@ $(NAME)	:	$(OBJS)
 		gcc $(CFLAGS) $(OBJS) -o $(NAME) -lpthread
 
 %.o: %.c $(HEADERS)
-		clang $(FLAG) -c $< -o $@ -I $(HEADERS)
+		gcc $(CFLAGS) -c $< -o $@ -I $(HEADERS)
 
 clean	:
 		rm -f $(OBJS)
