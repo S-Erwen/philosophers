@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 11:19:59 by esidelar          #+#    #+#             */
-/*   Updated: 2021/11/26 15:34:57 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2021/12/01 19:02:26 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int			parsing_gv(int ac, char **gv, t_set *set)
 		return (-1);
 	}
 	i = 1;
+	set->arg = 0;
 	if ((set->nb_philo = ft_isnum(gv[i++])) == -1)
 		return (-1);
 	if ((set->time_die = ft_isnum(gv[i++])) == -1)
@@ -31,9 +32,13 @@ int			parsing_gv(int ac, char **gv, t_set *set)
 	if ((set->time_sleep = ft_isnum(gv[i++])) == -1)
 		return (-1);
 	if (ac == 6)
+	{
 		if ((set->nb_eat = ft_isnum(gv[i++])) == -1)
 			return (-1);
-	set->nb_eat = -1;
+		set->arg = 1;
+	}
+	else
+		set->nb_eat = -1;
 	if (set->nb_philo < 2 || set->time_die <= 0 || set->time_eat <= 0
 		|| set->time_sleep <= 0)
 		return (-1);

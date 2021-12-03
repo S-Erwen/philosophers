@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 15:45:12 by esidelar          #+#    #+#             */
-/*   Updated: 2021/11/26 16:18:46 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2021/12/01 19:24:35 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,19 @@
 # include <string.h>
 # include <sys/time.h>
 
+# define RED "\033[0;31m"
+# define YELLOW "\033[0;33m"
+# define RESET "\033[0m"
+# define BOLDGREEN "\033[1;32m"
+# define GRAY "\033[30;1m"
+
 typedef struct		s_set
 {
 	long int		time_eat;
 	long int		time_sleep;
 	long int		time_die;
 	int				nb_eat;
+	int				arg;
 	int				nb_philo;
 	int				is_finish;
 	long int		start_time;
@@ -60,10 +67,13 @@ int					parsing_gv(int ac, char **gv, t_set *set);
 long int			actual_time(void);
 void				ft_usleep(long int time_in_ms);
 
+void				check_sleep(t_philo *p, long add_time);
+
 int     			pthread_start(t_all *all);
-void				write_philo(t_philo *p, char *msg, int eat);
+void				secrure_write_philo(t_philo *p, char *msg, int eat);
 void        		*time_to_die(void *t_data);
 void				*launch_routine(void *t_data);
+int					check_die(t_philo *p);
 
 int					ft_atoi(const char *nptr);
 int					ft_isnum(char *str);

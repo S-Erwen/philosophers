@@ -10,7 +10,7 @@ int 		main(int ac, char **gv)
 	all = malloc(sizeof(t_all));
 	if (!all)
 		return (call_err("MALLOC_ERR00", all, 0));
-	if (!parsing_gv(ac, gv, &all->setting))
+	if (parsing_gv(ac, gv, &all->setting))
 		return (call_err("ARG_ERROR", all, 0));
 	all->philo = malloc(sizeof(t_philo) * all->setting.nb_philo);
 	if (!all->philo)
@@ -43,12 +43,14 @@ int			init_philo(t_philo *philo, t_set *set)
 
 	i = 0;
 	ret = 0;
-	while (i <= philo->set->nb_philo)
+	while (i <= set->nb_philo)
 	{
-		if (i < philo->set->nb_philo)
+		if (i < set->nb_philo)
 		{
+			set->start_time = actual_time();
+			philo[i].eat_time = actual_time();
 			philo[i].nb = i + 1;
-			philo[i].eating_count = 0;
+			philo[i].eating_count = 1;
 			philo[i].set = set;
 			ret = pthread_mutex_init(&philo[i].right_fork, NULL);
 			if (i)

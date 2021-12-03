@@ -6,7 +6,7 @@
 #    By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/15 11:25:27 by esidelar          #+#    #+#              #
-#    Updated: 2021/11/26 16:11:30 by esidelar         ###   ########lyon.fr    #
+#    Updated: 2021/12/01 17:27:23 by esidelar         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS =		main.c \
 			ft_atoi.c \
 			set_time.c \
 			parsing.c \
+			check.c \
 
 OBJS	= 	$(SRCS:.c=.o)
 
