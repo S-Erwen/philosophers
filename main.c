@@ -39,25 +39,24 @@ int			call_err(char *err, t_all *all, int f)
 int			init_philo(t_philo *philo, t_set *set)
 {
 	int		i;
-	int		ret;
 
 	i = 0;
-	ret = 0;
-	while (i <= set->nb_philo)
+	set->start_time = actual_time();
+	while (i < set->nb_philo)
 	{
-		if (i < set->nb_philo)
-		{
-			set->start_time = actual_time();
-			philo[i].eat_time = actual_time();
-			philo[i].nb = i + 1;
-			philo[i].eating_count = 1;
-			philo[i].set = set;
-			ret = pthread_mutex_init(&philo[i].right_fork, NULL);
-			if (i)
-				philo[i].left_fork = &philo[i - 1].right_fork;
-		}
+		philo[i].set = set;
+		philo[i].eat_time = set->start_time;
+		philo[i].nb = i + 1;
+		philo[i].eating_count = 0;
+		philo[i].right_fork = NULL;
+		if (pthread_mutex_init(&philo[i].left_fork, NULL))
+			return (0);
+		if (set->nb_philo == 1)
+			return (0);
+		if (i == set->nb_philo - 1)
+			philo[i].right_fork = &philo[0].left_fork;
 		else
-			philo[0].left_fork = &philo[i].right_fork;
+			philo[i].right_fork = &philo[i + 1].left_fork;
 		i++;
 	}
 	return (0);

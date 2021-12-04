@@ -6,7 +6,7 @@
 /*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 15:45:12 by esidelar          #+#    #+#             */
-/*   Updated: 2021/12/01 19:24:35 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2021/12/04 16:29:41 by esidelar         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,24 @@ typedef struct		s_set
 	long int		time_sleep;
 	long int		time_die;
 	int				nb_eat;
-	int				arg;
 	int				nb_philo;
+	int				nb_finish_eat;
 	int				is_finish;
 	long int		start_time;
 	pthread_mutex_t	finish;
 	pthread_mutex_t	write_mutex;
+	pthread_mutex_t	death_mutex;
 }					t_set;
 
 typedef struct		s_philo
 {
 	int				nb;
-	long int		stack_time;
 	long int		eat_time;
 	int				eating_count;
 	pthread_t		routine;
 	pthread_t		death;
-	pthread_mutex_t	*left_fork;
-	pthread_mutex_t	right_fork;
+	pthread_mutex_t	left_fork;
+	pthread_mutex_t	*right_fork;
 	t_set			*set;
 }					t_philo;
 
@@ -63,16 +63,19 @@ int					call_err(char *err, t_all *all, int f);
 int					init_philo(t_philo *philo, t_set *set);
 
 int					parsing_gv(int ac, char **gv, t_set *set);
+int					init_setting(int ac, char **gv, t_set *set);
 
 long int			actual_time(void);
 void				ft_usleep(long int time_in_ms);
 
-void				check_sleep(t_philo *p, long add_time);
-
 int     			pthread_start(t_all *all);
-void				secrure_write_philo(t_philo *p, char *msg, int eat);
+void				secure_write_philo(t_philo *p, char *msg);
 void        		*time_to_die(void *t_data);
+int					goto_eat(t_philo *philo);
+void				goto_sleep_think(t_philo *philo);
 void				*launch_routine(void *t_data);
+void				good_eat();
+
 int					check_die(t_philo *p);
 
 int					ft_atoi(const char *nptr);

@@ -6,12 +6,12 @@
 #    By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/15 11:25:27 by esidelar          #+#    #+#              #
-#    Updated: 2021/12/01 17:27:23 by esidelar         ###   ########lyon.fr    #
+#    Updated: 2021/12/04 15:06:36 by esidelar         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= 	philo
-HEADERS	=	include/philosophers.h
+HEADERS	=	include/
 CC		=	gcc
 CFLAGS 	= 	-Wall -Wextra -Werror
 
