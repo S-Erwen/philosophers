@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: esidelar <esidelar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 11:21:17 by esidelar          #+#    #+#             */
-/*   Updated: 2021/02/15 11:21:27 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2021/12/04 18:49:43 by esidelar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/philosophers.h"
 
-int		ft_atoi(const char *nptr)
+int	ft_atoi(const char *nptr)
 {
 	long	nb;
 	long	count;

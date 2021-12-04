@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: esidelar <esidelar@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/04 18:44:54 by esidelar          #+#    #+#             */
+/*   Updated: 2021/12/04 18:50:36 by esidelar         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "include/philosophers.h"
 
 #define PHILO_ALLOC -11
 #define ALL_ALLOC -10
 
-int 		main(int ac, char **gv)
+int	main(int ac, char **gv)
 {
 	t_all	*all;
 
@@ -20,7 +32,7 @@ int 		main(int ac, char **gv)
 	return (pthread_start(all));
 }
 
-int			call_err(char *err, t_all *all, int f)
+int	call_err(char *err, t_all *all, int f)
 {
 	printf("%s\n", err);
 	if (f)
@@ -36,7 +48,7 @@ int			call_err(char *err, t_all *all, int f)
 	return (-1);
 }
 
-int			init_philo(t_philo *philo, t_set *set)
+int	init_philo(t_philo *philo, t_set *set)
 {
 	int		i;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: esidelar <esidelar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 15:45:12 by esidelar          #+#    #+#             */
-/*   Updated: 2021/12/04 16:29:41 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2021/12/04 19:21:55 by esidelar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define BOLDGREEN "\033[1;32m"
 # define GRAY "\033[30;1m"
 
-typedef struct		s_set
+typedef struct s_set
 {
 	long int		time_eat;
 	long int		time_sleep;
@@ -41,7 +41,7 @@ typedef struct		s_set
 	pthread_mutex_t	death_mutex;
 }					t_set;
 
-typedef struct		s_philo
+typedef struct s_philo
 {
 	int				nb;
 	long int		eat_time;
@@ -53,7 +53,7 @@ typedef struct		s_philo
 	t_set			*set;
 }					t_philo;
 
-typedef struct		s_all
+typedef struct s_all
 {
 	t_set			setting;
 	t_philo			*philo;
@@ -68,13 +68,14 @@ int					init_setting(int ac, char **gv, t_set *set);
 long int			actual_time(void);
 void				ft_usleep(long int time_in_ms);
 
-int     			pthread_start(t_all *all);
+int					pthread_start(t_all *all);
 void				secure_write_philo(t_philo *p, char *msg);
-void        		*time_to_die(void *t_data);
+void				*time_to_die(void *t_data);
+void				*launch_routine(void *t_data);
+void				good_eat(void);
+
 int					goto_eat(t_philo *philo);
 void				goto_sleep_think(t_philo *philo);
-void				*launch_routine(void *t_data);
-void				good_eat();
 
 int					check_die(t_philo *p);
 

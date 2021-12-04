@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+         #
+#    By: esidelar <esidelar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/15 11:25:27 by esidelar          #+#    #+#              #
-#    Updated: 2021/12/04 15:06:36 by esidelar         ###   ########lyon.fr    #
+#    Updated: 2021/12/04 19:19:25 by esidelar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS =		main.c \
 			set_time.c \
 			parsing.c \
 			check.c \
+			eat_sleep_think.c \
 
 OBJS	= 	$(SRCS:.c=.o)
 

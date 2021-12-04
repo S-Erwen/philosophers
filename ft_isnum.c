@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isnum.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esidelar <esidelar@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: esidelar <esidelar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 11:21:52 by esidelar          #+#    #+#             */
-/*   Updated: 2021/02/15 11:44:45 by esidelar         ###   ########lyon.fr   */
+/*   Updated: 2021/12/04 18:50:09 by esidelar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/philosophers.h"
 
-int		ft_isnum(char *str)
+int	ft_isnum(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str)
