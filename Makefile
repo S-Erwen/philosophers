@@ -6,12 +6,12 @@
 #    By: esidelar <esidelar@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/15 11:25:27 by esidelar          #+#    #+#              #
-#    Updated: 2021/12/04 19:19:25 by esidelar         ###   ########.fr        #
+#    Updated: 2021/12/05 14:56:31 by esidelar         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= 	philo
-HEADERS	=	include/
+HEADERS	=	./include/philosophers.h
 CC		=	gcc
 CFLAGS 	= 	-Wall -Wextra -Werror
 
@@ -31,7 +31,7 @@ SRCS =		main.c \
 OBJS	= 	$(SRCS:.c=.o)
 
 
-all		: 	$(NAME)
+all		: 	$(NAME) $(HEADERS)
 
 $(NAME)	:	$(OBJS)
 		gcc $(CFLAGS) $(OBJS) -o $(NAME) -lpthread
